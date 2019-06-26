@@ -1,0 +1,41 @@
+.form {
+    width: 100%;
+    padding: 30px;
+
+    justify-content: center;
+    display: flex;
+
+    background: #00b8e2; 
+
+    > * {
+        margin: 0px 15px;
+    }
+
+    .text-input {
+        padding: 13px 19px;
+    }
+
+    .btn {
+        padding: 3px 50px 3px 30px;
+        border: 2px solid white;
+        border-radius: 3px;
+
+        background: rgba(0, 0, 0, 0);
+        color: white;
+
+        text-transform: uppercase;
+        font-weight: bolder;
+        font-size: 12pt;
+        transition: transform 0.3s, border 1s;
+        
+        &:hover{
+            transform: scale(1.05);
+            transition: 0.3s;
+        }
+    }
+
+    >*.--disabled {
+        border-color: red;
+        transition: border 1s;
+    }
+}

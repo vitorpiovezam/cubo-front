@@ -1,0 +1,8 @@
+<div>
+  <form class="form" [formGroup]="userForm">
+    <input type="text" placeholder="First name" class="text-input" formControlName="firstName">
+    <input type="text" placeholder="Last name" class="text-input"  formControlName="lastName">
+    <input type="text" placeholder="Participation" class="text-input" formControlName="participation">
+    <button [class.--disabled]="userForm.invalid" class="btn">send</button>
+  </form>
+</div>
