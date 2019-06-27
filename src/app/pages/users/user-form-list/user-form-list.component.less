@@ -1,3 +1,7 @@
+*{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 .form {
     width: 100%;
     padding: 30px;
@@ -13,29 +17,76 @@
 
     .text-input {
         padding: 13px 19px;
+        background: white;
+
+        &:focus {
+            outline: none;
+        }
     }
 
+    
     .btn {
         padding: 3px 50px 3px 30px;
         border: 2px solid white;
         border-radius: 3px;
 
-        background: rgba(0, 0, 0, 0);
+        background: #00b8e2; 
         color: white;
 
         text-transform: uppercase;
         font-weight: bolder;
         font-size: 12pt;
-        transition: transform 0.3s, border 1s;
+        transition: transform 0.3s, border 1s, filter 1s;
         
         &:hover{
             transform: scale(1.05);
             transition: 0.3s;
         }
+
+        &:active {
+            transform: scale(1);
+            transition: 0.2s;
+        }
+    }
+
+    >*.--invalid {
+        border: 2px solid red;
+        transition: all 1s;
+
+        &:hover{
+            transform: none !important;
+            transition: 0s !important;
+        }
     }
 
     >*.--disabled {
-        border-color: red;
-        transition: border 1s;
+        border: 3px solid gray;
+        filter: grayscale(40%);
+        transition: filter 1s;
+
+        &:hover {
+            transition: all 0s !important;
+            transform: none !important;
+        }
     }
+
+    
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    padding-top: 30px;
+    > div {
+        justify-content: center;
+        text-align: center;
+        padding: 10px;
+    }
+    .title {
+        font-size: 25px;
+        font-weight: bolder;
+        color: #394b50;
+        text-transform: uppercase;
+    }
+
 }
