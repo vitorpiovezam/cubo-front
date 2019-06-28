@@ -18,15 +18,7 @@ export class UserService {
     }
 
     create(user: User): Observable<User> {
-        return this.http.post(this.apiPath, user);
-    }
-    protected jsonDataToResources(jsonData: any[]): User[] {
-        const resources: User[] = [];
-        jsonData.forEach(element => resources.push(this.jsonDataToResourceFn(element)));
-        return resources;
+        return this.http.post<User>(this.apiPath, user);
     }
 
-    protected jsonDataToResourceFn(jsonData: any) {
-        return Object.assign(new User(), jsonData);
-    }
 }

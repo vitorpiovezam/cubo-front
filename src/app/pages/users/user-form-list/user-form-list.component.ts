@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ɵConsole } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { User } from '../shared/user.model';
 import { UserService } from '../shared/user.service';
@@ -11,14 +11,15 @@ import { UserService } from '../shared/user.service';
 export class UserFormListComponent implements OnInit {
 
   userForm: FormGroup;
-  users: User[];
+  users: User[] = [];
 
   constructor(private formBuilder: FormBuilder, public userService: UserService) {
   }
 
   ngOnInit() {
-    this.buildUserForm();
     this.getUsers();
+
+    this.buildUserForm();
   }
 
   public buildUserForm() {
@@ -31,13 +32,16 @@ export class UserFormListComponent implements OnInit {
 
   public getUsers() {
     this.userService.getAll().subscribe(
-      users => this.users = users
+      users => this.users = users,
     );
+
   }
 
   public submit() {
     let user: User = Object.assign(new User(), this.userForm.value);
-    this.userService.create(user);
-    this.getUsers();
+    
+    this.userService.create(user).subscribe(
+      user => this.users.push(user[0])
+    );
   }
 }

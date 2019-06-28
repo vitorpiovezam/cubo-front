@@ -37,7 +37,7 @@
         text-transform: uppercase;
         font-weight: bolder;
         font-size: 12pt;
-        transition: transform 0.3s, border 1s, filter 1s;
+        transition: transform 0.3s, border 0.3s;
         
         &:hover{
             transform: scale(1.05);
@@ -61,12 +61,10 @@
     }
 
     >*.--disabled {
-        border: 3px solid gray;
-        filter: grayscale(40%);
-        transition: filter 1s;
 
         &:hover {
-            transition: all 0s !important;
+            border: 3px solid red;
+            transition: all 0.3s !important;
             transform: none !important;
         }
     }
@@ -106,8 +104,10 @@
         justify-content: center;
 
         table {
-            
+            border: 1px solid gray;
+            th {
+                border: 1px solid gray;
+            }
         }
-
     }
 }

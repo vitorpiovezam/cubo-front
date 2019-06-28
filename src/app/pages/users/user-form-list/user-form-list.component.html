@@ -1,10 +1,11 @@
 <div>
 
   <form class="form" [formGroup]="userForm">
-    <input [class.--invalid]="userForm.get('firstName').invalid" type="text" placeholder="First name" class="text-input" formControlName="firstName">
-    <input [class.--invalid]="userForm.get('lastName').invalid" type="text" placeholder="Last name" class="text-input"  formControlName="lastName">
-    <input [class.--invalid]="userForm.get('participation').invalid" type="text" placeholder="Participation" class="text-input" formControlName="participation">
-    <button [class.--disabled]="userForm.invalid" class="btn">send</button>
+    <input type="text" placeholder="First name" class="text-input" formControlName="firstName">
+    <input type="text" placeholder="Last name" class="text-input"  formControlName="lastName">
+    <input type="text" placeholder="Participation" class="text-input" formControlName="participation">
+    <button [class.--disabled]="userForm.invalid" (click)="submit()
+    " class="btn">send</button>
   </form>
 
   <div class="header">
@@ -14,7 +15,7 @@
 
   <div class="content">
     <div class="list">
-      
+
       <table>
         <thead>
           <th>First Name</th>
