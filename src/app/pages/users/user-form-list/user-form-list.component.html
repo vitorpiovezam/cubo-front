@@ -4,8 +4,7 @@
     <input type="text" placeholder="First name" class="text-input" formControlName="firstName">
     <input type="text" placeholder="Last name" class="text-input"  formControlName="lastName">
     <input type="text" placeholder="Participation" class="text-input" formControlName="participation">
-    <button [class.--disabled]="userForm.invalid" (click)="submit()
-    " class="btn">send</button>
+    <button [disabled]="userForm.invalid" [class.--disabled]="userForm.invalid" (click)="submit()" class="btn">send</button>
   </form>
 
   <div class="header">
@@ -18,13 +17,15 @@
 
       <table>
         <thead>
+          <th> </th>
           <th>First Name</th>
           <th>Last Name</th>
           <th>Participation</th>
         </thead>
 
         <tbody>
-          <tr *ngFor="let user of users">
+          <tr *ngFor="let user of users; let i = index">
+            <td>{{ i }}</td>
             <td>{{ user.firstName }}</td>
             <td>{{ user.lastName }}</td>
             <td>{{ user.participation }}</td>

@@ -75,7 +75,7 @@
 .header {
     display: flex;
     flex-direction: column;
-    padding-top: 30px;
+    padding: 40px;
     > div {
         justify-content: center;
         text-align: center;
@@ -104,10 +104,25 @@
         justify-content: center;
 
         table {
-            border: 1px solid gray;
+            border-collapse: separate;
+            border-spacing: 0;
+            min-width: 70%;
+
             th {
-                border: 1px solid gray;
+                text-align: left;
             }
+
+            td:first-child {
+                text-align: center;
+            }
+
+            th,td {
+                padding: 8px;
+                font-weight: normal;
+                border: 1px solid #b7b7b7;
+                color: #b7b7b7;
+            }
+
         }
     }
 }
