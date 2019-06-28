@@ -8,24 +8,17 @@ import { Inject, Injectable, Injector } from '@angular/core';
     providedIn: 'root'
 })
 export class UserService {
-    public http: HttpClient
-    public apiPath: string = 'localhost:8000/users';
+    public apiPath: string = 'http://localhost:8080/users';
 
-    constructor(public httpClient : HttpClient) {
+    constructor(public http: HttpClient) {
     }
 
     getAll(): Observable<User[]> {
-        return this.http.get(this.apiPath).pipe(
-            map(this.jsonDataToResources.bind(this)),
-            catchError(this.handleError),
-        );
+        return this.http.get<User[]>(this.apiPath);
     }
 
-    create(resource: User): Observable<User> {
-        return this.http.post(this.apiPath, resource).pipe(
-            map(() => resource),
-            catchError(this.handleError)
-        );
+    create(user: User): Observable<User> {
+        return this.http.post(this.apiPath, user);
     }
     protected jsonDataToResources(jsonData: any[]): User[] {
         const resources: User[] = [];
@@ -35,10 +28,5 @@ export class UserService {
 
     protected jsonDataToResourceFn(jsonData: any) {
         return Object.assign(new User(), jsonData);
-    }
-
-    protected handleError(error: any): Observable<any> {
-        console.log('request error -> ', error);
-        return throwError(error);
     }
 }
